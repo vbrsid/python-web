@@ -1,0 +1,5 @@
+- name: PART 1 - build and store images 
+  import_playbook: build-store-images.yml
+
+- name: PART 2 - deploy images into k8s
+  import_playbook: deploy-pods-k8s.yml
