@@ -2,11 +2,13 @@
 
 - name: build & store docker images in dockerhub
   hosts: localhost
+  vars:
+    DOCKER_HUB_USERNAME: <docker-username>
   tasks:
 
     - name: build container image for pod 1
       docker_image:
-        name: vdockerhub/a-pod-1
+        name: "{{ DOCKER_HUB_USERNAME }}/a-pod-1"
         tag: latest
         push: yes
         build:
@@ -15,7 +17,7 @@
 
     - name: build container image for pod 2
       docker_image:
-        name: vdockerhub/a-pod-2
+        name: "{{ DOCKER_HUB_USERNAME }}/a-pod-2"
         tag: latest
         push: yes
         build:
