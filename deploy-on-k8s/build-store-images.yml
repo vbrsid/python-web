@@ -24,7 +24,7 @@
         tag: latest
         push: yes
         build:
-          path: ../flask_docker_demo
+          path: ../micro-service-A
         source: build
 
     - name: build container image for pod 2
@@ -33,5 +33,5 @@
         tag: latest
         push: yes
         build:
-          path: ../second-pod
+          path: ../micro-service-B
         source: build

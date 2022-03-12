@@ -12,13 +12,13 @@
 
     - name: deploy python pod 1
       kubernetes.core.k8s:
-        src: ../flask_docker_demo/a-pod-1-k8s.yaml
+        src: ../micro-service-A/a-pod-1-k8s.yaml
         namespace: python-pods-ns
         state: present
 
     - name: deploy python pod 2
       kubernetes.core.k8s:
-        src: ../second-pod/a-pod-2-k8s.yaml
+        src: ../micro-service-B/a-pod-2-k8s.yaml
         namespace: python-pods-ns
         state: present
 
