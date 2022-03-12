@@ -3,8 +3,20 @@
 - name: build & store docker images in dockerhub
   hosts: localhost
   vars:
-    DOCKER_HUB_USERNAME: <docker-username>
+    DOCKER_HUB_USERNAME: vdockerhub
   tasks:
+
+    - name: remove container image for pod 1
+      docker_image:
+        name: "{{ DOCKER_HUB_USERNAME }}/a-pod-1"
+        tag: latest
+        state: absent
+
+    - name: remove container image for pod 2
+      docker_image:
+        name: "{{ DOCKER_HUB_USERNAME }}/a-pod-2"
+        tag: latest
+        state: absent
 
     - name: build container image for pod 1
       docker_image:
