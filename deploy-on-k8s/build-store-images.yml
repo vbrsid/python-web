@@ -1,0 +1,23 @@
+---
+
+- name: build & store docker images in dockerhub
+  hosts: localhost
+  tasks:
+
+    - name: build container image for pod 1
+      docker_image:
+        name: vdockerhub/a-pod-1
+        tag: latest
+        push: yes
+        build:
+          path: ../flask_docker_demo
+        source: build
+
+    - name: build container image for pod 2
+      docker_image:
+        name: vdockerhub/a-pod-2
+        tag: latest
+        push: yes
+        build:
+          path: ../second-pod
+        source: build
