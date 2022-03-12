@@ -51,3 +51,20 @@ To build, store (in dockerhub account) and deploy images into a kubernetes clust
 cd deploy-on-k8s
 ansible-playbook all-in-one.yml
 ```
+
+## Web Output:
+
+Check if both the micro-services are up and running:
+
+```
+kubectl get pods -n python-pods-ns
+```
+
+The entry micro-service (A) is exposed as a nodePort service. So, you can access the web output using the URL:
+
+```
+http://<one-of-the-cluster-node-IPs>:32444
+```
+
+You should see output like this:
+![Web Output](/images/web_output.png)
