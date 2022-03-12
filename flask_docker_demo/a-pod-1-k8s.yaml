@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a-pod-1
+  labels:
+    app: a-pod-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: a-pod-1
+  template:
+    metadata:
+      labels:
+        app: a-pod-1
+    spec:
+      containers:
+      - name: a-pod-1
+        image: vdockerhub/a-pod-1:latest
+        ports:
+        - containerPort: 5001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: a-pod-1
+  name: a-pod-1
+spec:
+  ports:
+  - port: 5001
+    protocol: TCP
+    targetPort: 5001
+    nodePort: 32444
+  selector:
+    app: a-pod-1
+  type: NodePort
+status:
+  loadBalancer: {}
