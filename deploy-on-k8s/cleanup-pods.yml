@@ -1,0 +1,23 @@
+---
+
+- name: remove test pods on kubernetes
+  hosts: localhost
+  tasks:
+
+    - name: remove python pod 2
+      kubernetes.core.k8s:
+        src: ../second-pod/a-pod-2-k8s.yaml
+        namespace: python-pods-ns
+        state: absent
+
+    - name: remove python pod 1
+      kubernetes.core.k8s:
+        src: ../flask_docker_demo/a-pod-1-k8s.yaml
+        namespace: python-pods-ns
+        state: absent
+
+    - name: delete namespace
+      kubernetes.core.k8s:
+        name: python-pods-ns
+        kind: namespace
+        state: absent
